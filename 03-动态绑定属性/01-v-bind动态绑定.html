@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .active{
+            color: red;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>{{message}}</div>
+        <h2>{{name}}</h2>
+        <h2 :class="{active:isActive}"></h2>
+        <ul>
+            <li v-for="(item,index) in movies" :class="{active:index===currently}" @click="btn(index)">{{index+1}}.{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:'你好啊',
+                name:'张三',
+                isActive:true,
+                movies:['大话西游','星际穿越','女娲补天','斗破苍穹','斗罗大陆'],
+                currently:0
+            },
+            methods:{
+                btn(index){
+                  this.currently=index;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
